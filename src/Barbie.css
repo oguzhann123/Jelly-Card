@@ -409,8 +409,13 @@ padding: 0;
   .barbie-giydirme-container input {
     font-size: 10px;
     padding: 4px;
-    margin-top: 5px;
     width: 15%;
+ position: relative;
+    top: -25px; /* Daha yukarı taşır */
+  }
+ .progress-bar-container {
+    position: relative;
+    top: -15px; /* Daha yukarı taşır */
   }
 
   /* Modal içeriği küçültüldü */
