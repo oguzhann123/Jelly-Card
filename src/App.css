@@ -1,0 +1,117 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.styled-button {
+  padding: 10px 24px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Press Start 2P", serif;
+  margin-right: 20px;
+
+  color: white;
+  background: linear-gradient(45deg, #57055c, #4a024b);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.styled-button:hover {
+  transform: scale(1.1);
+}
+
+.wallet-portal {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: rgb(194, 191, 193);
+}
+
+.rotating-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  animation: wormhole 30s infinite; /* 40 saniyede bir tam tur */
+  transform-style: preserve-3d;
+  animation-fill-mode: forwards; /* Animasyon tamamlandıktan sonra son halini korur */
+}
+
+.circle-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  box-shadow: inset 0 0 20px rgba(143, 0, 195, 0.5), 
+              0 0 30px rgba(155, 0, 173, 0.3);
+  object-fit: cover; /* Görselin bozulmadan kapsaması için */
+
+}
+
+/* Görselin doğru başlangıç pozisyonunu ve doğru animasyonu sağlamak */
+@keyframes wormhole {
+  0% { 
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1.2);
+  }
+  25% { 
+    transform: perspective(800px) rotateX(00deg) rotateY(90deg) scale(0.8);
+  }
+  50% { 
+    transform: perspective(800px) rotateX(0deg) rotateY(180deg) scale(1.5);
+  }
+  75% { 
+    transform: perspective(800px) rotateX(0deg) rotateY(270deg) scale(0.6);
+  }
+  100% { 
+    transform: perspective(800px) rotateX(0deg) rotateY(360deg) scale(1.2);
+  }
+}
+
+
+
+
+
+.social-media-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Aralarındaki mesafeyi ayarlayın */
+  margin-top: 20px; /* Butonların altında biraz boşluk bırakın */
+}
+
+.social-icon {
+  width: 50px; /* Logoların boyutunu ayarlayın */
+  height: 50px;
+  transition: transform 0.3s ease-in-out; /* Hover animasyonu */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Hover efekti */
+}
+
+
+/* Kapanma Butonu */
+.clse-button {
+  background-color: #a90be7; /* Kırmızı renk */
+  color: white; /* Metin rengi beyaz */
+  padding: 10px 20px; /* Butonun iç boşlukları */
+  border: none; /* Kenarlık yok */
+  font-family: "Press Start 2P", serif;
+
+  border-radius: 5px; /* Yuvarlatılmış köşeler */
+  font-size: 16px; /* Font boyutu */
+  cursor: pointer; /* Üzerine gelindiğinde işaretçi parmağı simgesi */
+  transition: background-color 0.3s ease; /* Butonun rengindeki geçiş animasyonu */
+}
+
+/* Kapanma butonuna hover efekti */
+.clse-button:hover {
+  background-color: #000000; /* Üzerine gelindiğinde kırmızı tonu değişir */
+}

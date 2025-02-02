@@ -1,0 +1,491 @@
+
+
+/* Genel Konteyner */
+.barbie-giydirme-container {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 50px;
+ /* background: radial-gradient(circle, rgb(30, 30, 30) 0%, rgb(34, 33, 33) 100%), url('/public/images/portalgo.png'); */
+ background: url('/public/space1.png') no-repeat center center;
+background-size: cover;
+
+  color: #f8bbd0; /* Pembe yazı */
+  min-height: 100vh; /* Ekranın tamamını kaplar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+padding: 0;
+  
+}
+.logo {
+  position: fixed;     /* Sayfa kaydırılsa bile sabit konumda kalır */
+  top: 0;              /* Sayfanın üst kısmına hizalar */
+  left: 0;             /* Sayfanın sol kısmına hizalar */
+  width: 200px;        /* Logo genişliği */
+  height: auto;        /* Yükseklik otomatik ayarlanır */
+  margin-bottom: -10px; /* Alt boşluk ayarı */
+}
+
+/*  Arka Plan */
+.barbie-giydirme-container::before {
+  
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3; /* Hafif görünürlük */
+  z-index: -1; /* İçeriğin arkasında */
+}
+
+/* bi ise yaramiyor suanlik */
+.character {
+  position: relative;
+  width: 90%;
+  height: 400px;
+  margin: 20px auto;
+  border: 7px solid transparent; /* Şeffaf kenarlık */
+  border-radius: 15px; /* Köşeleri yuvarla */
+  box-shadow: 0 8px 20px rgba(144, 3, 109, 0.8); /* Pembe parlayan gölge */
+  background: rgba(255, 255, 255, 0.1); /* Hafif saydam arka plan */
+  background-clip: padding-box; /* Arka planın kenarlık iç kısmında kalmasını sağlar */
+  /*border-image: linear-gradient(90deg, #6a04ef, #a505e0, #df09e6); /* Border geçişi */
+  border-image-slice: 1;
+  overflow: hidden; /* Taşan içerikleri gizle */
+}
+
+
+
+
+
+
+/* Baş Görseli */
+.character img:first-of-type {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 2; /* Üstte */
+  /*filter: drop-shadow(0 4px 6px rgba(255, 128, 171, 0.8)); /* kafa icin pembe Parlaklık efekti */
+  transition: transform 0.3s ease;
+}
+
+.character img:first-of-type:hover {
+  transform: translateX(-50%) scale(1.1); /* Hafif büyüme */
+}
+
+/* Vücut Görseli */
+.character img:nth-of-type(2) {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  z-index: 1; /* Başın altında */
+/*  filter: drop-shadow(0 4px 6px rgba(0, 128, 255, 0.8)); /* blue lighter */
+  transition: transform 0.3s ease;
+}
+
+.character img:nth-of-type(2):hover {
+  transform: translateX(-50%) scale(1.1); /* Hafif büyüme */
+}
+
+
+
+/* Kontrol Butonları */
+.controls {
+  position: relative; /* Butonları normal akışa dahil eder */
+  top: 10px; /* Sayfanın üst kısmından 20px mesafe */
+  left: 50%; /* Sayfanın ortasına hizalamak için */
+  transform: translateX(-50%); /* Yatayda tam ortalamak için */
+  z-index: 999; /* Butonların üstte görünmesi için */
+  display: flex; /* Butonları yatayda hizalamak için flex kullanıyoruz */
+  justify-content: center; /* Butonları yatayda ortalamak için */
+  gap: 15px; /* Butonlar arasındaki mesafe */
+  width: 100%; /* Genişliği ekranın tamamına yay */
+}
+
+
+
+
+/* Kontrol Butonları   suanlik bir ise yaramiyor */ 
+.controls button {
+  margin: 0; /* Margin'i sıfırlıyoruz çünkü flex ile hizalayacağız */
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #ff80ab, #ff4081); /* Pembe degrade */
+  color: white;
+  border: 2px solid #ff4081;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+.controls button:hover {
+  background: linear-gradient(90deg, #ff4081, #ff80ab); /* Ters degrade */
+  transform: scale(1.1); /* Hover efekti */
+}
+
+
+/* İndirme Butonu Konteyneri */
+.download-button-container {
+  position: absolute; /* Sayfa kaydırıldığında butonun sabit kalmasını sağlar */
+  top: 5%; /* Sayfanın üst kısmına hizalar */
+  left: 50%; /* Sayfanın ortasına hizalar */
+  transform: translateX(-50%); /* Yatayda tam ortalamak için */
+  text-align: center; /* Butonun yatayda ortalanmasını sağlar */
+  z-index: 1000;
+  
+}
+
+.download-button {
+  background-color: rgb(86, 7, 92);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.download-button:hover {
+  background-color: rgba(235, 235, 235, 0.8);
+  transform: scale(1.05);
+}
+
+/* İlerleme çubuğu stilini belirleyelim */
+.progress-bar-container {
+  width: 100%; /* Çubuğun tamamı için genişlik */
+  background-color: #e0e0e0; /* Çubuğun arka planı */
+  border-radius: 20px;
+  height: 20px; /* Yükseklik */
+  margin: 20px 0;
+  overflow: hidden; /* Border-radius etkisi için */
+}
+
+.progress-bar {
+  height: 100%; /* Yüksekliği tam çubuğa yayalım */
+  background-color: rgb(86, 7, 92); /* İlerleme çubuğunun rengi */
+  transition: width 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+/* İndirme Butonu fontsize12px padding 15px 30px*/
+.barbie-giydirme-container button {
+  margin-top: 20px;
+  padding: 15px 20px;
+  color: rgb(255, 255, 255);
+  border: 2px solid #f1f1f1;
+  border-radius: 12px;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Arka plan animasyonu */
+  background: linear-gradient(90deg, #5303e8, #e007dc);
+  background-size: 400% 400%; /* Degrade'nin hareket etmesi için genişlik */
+  animation: gradientAnimation 5s ease infinite; /* Animasyon ekleme */
+}
+/* Degrade Animasyonu */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%; /* Başlangıç pozisyonu */
+  }
+  50% {
+    background-position: 100% 50%; /* Ortada geçiş */
+  }
+  100% {
+    background-position: 0% 50%; /* Başa dönüş */
+  }
+}
+
+.barbie-giydirme-container button:hover {
+  background: linear-gradient(90deg, #0e100e, #090909); /* Ters degrade */
+  transform: scale(1.15); /* Hafif büyüme */
+}
+
+
+
+
+/* Modal İçeriği */
+.modal-content {
+  background: linear-gradient(90deg, #c806c8, #4c04b1);  /* Hafif pembe yazı */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(223, 221, 222, 0.5); /* Pembe parlama */
+  width: 90%; /* Daha küçük ekranlarda uyumlu genişlik */
+  max-width: 1000px; /* Maksimum genişlik */
+  max-height: 80vh; /* Yüksekliği ekranın %80'i ile sınırla */
+  text-align: center;
+  font-family: "Press Start 2P", serif;
+
+  position: fixed; /* Sayfanın üstüne sabitler */
+  top: 10%; /* Sayfanın üst kısmından %10 aşağıda */
+  left: 50%; /* Yatayda ortalar */
+  transform: translateX(-50%); /* Tam ortalamak için */
+  z-index: 1000; /* Üstte görünmesi için yüksek bir z-index değeri */
+  overflow-y: auto; /* Dikey kaydırma özelliği */
+  overflow-x: hidden; /* Yatay kaydırmayı kapat */
+}
+
+/* Modal İçerik Kaydırma Durumu için Örnek */
+.modal-content::-webkit-scrollbar {
+  width: 10px; /* Kaydırma çubuğu genişliği */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #f8bbd0; /* Kaydırma çubuğu rengi */
+  border-radius: 5px; /* Yuvarlak köşeler */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #ff80ab; /* Üzerine gelince daha parlak pembe */
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #1c1c1c; /* Arka plan kaydırma izi */
+}
+
+/* Modal İçindeki Görseller */
+.modal-content img {
+  width: 70px;  /* Görsellerin boyutunu küçültüyoruz */
+  height: 70px;
+  margin: 12px;  /* Görseller arasındaki boşluğu artırdık */
+  cursor: pointer;
+  border: 3px solid transparent;  /* Kenarlık başlangıçta şeffaf */
+  border-radius: 12px;  /* Daha yuvarlak kenarlar */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Efekti */
+.modal-content img:hover {
+  transform: scale(1.1);  /* Resmi büyütüyoruz */
+  border-color: #120f10;  /* Hover durumunda kenarlık rengi değişiyor */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Hafif gölge efekti */
+}
+
+/* Kaldırma Butonu */
+.remove-button {
+  background-color: #ff1744; /* Kırmızı buton */
+  color: #fff; /* Beyaz yazı */
+  border: none;
+  border-radius: 50%; /* Yuvarlak buton */
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Hafif gölge efekti */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover Durumu */
+.remove-button:hover {
+  transform: scale(1.1); /* Hover'da hafif büyüme */
+  background-color: #d50000; /* Daha koyu kırmızı */
+}
+
+/* Seçili Eşya Kutusu */
+.selected-item-box {
+  background-color: rgba(255, 255, 255, 0.1); /* Hafif şeffaf arka plan */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Şeffaf kenar */
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+}
+
+/* Seçili Eşya Başlık */
+.selected-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Seçili Eşya İçerik */
+.selected-item-content img {
+  width: 80px; /* Görsel boyutu */
+  height: 80px;
+  border-radius: 10px; /* Kenarlar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
+}
+
+.selected-item-content span {
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.8; /* Hafif saydam yazı */
+}
+
+
+
+@media (max-width: 768px) {
+  /* Genel konteyner */
+  .barbie-giydirme-container {
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    width: 150px;        /* Logo genişliği */
+
+  }
+
+  /* Karakter alanı */
+  .character {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Tüm butonlar altta olacak */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+    gap: 2px; /* Buton araları iyice daraltıldı */
+  }
+
+  /* Butonları küçült */
+  .controls button {
+    padding: 5px 8px;
+    font-size: 9px;
+    border-radius: 4px;
+    margin: 1px;
+  }
+
+  /* Download bölümü küçültüldü */
+  .download-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  /* Download butonu küçültüldü */
+  .download-button {
+    padding: 6px 12px;
+    font-size: 10px;
+    margin: 4px;
+  }
+
+  /* Download counter küçültüldü */
+  .download-counter {
+    font-size: 11px;
+    margin-left: 6px;
+  }
+
+  /* Input biraz kaydırıldı */
+  .barbie-giydirme-container input {
+    font-size: 10px;
+    padding: 4px;
+    margin-top: 5px;
+    width: 15%;
+  }
+
+  /* Modal içeriği küçültüldü */
+  .modal-content {
+    width: 88%;
+    max-width: 420px;
+    max-height: 65vh;
+  }
+
+  /* Modal içindeki görseller küçültüldü */
+  .modal-content img {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+  }
+
+  /* Seçili eşya kutusu küçültüldü */
+  .selected-item-box {
+    padding: 6px;
+  }
+
+  /* Seçili eşya içeriği küçültüldü */
+  .selected-item-content img {
+    width: 50px;
+    height: 50px;
+  }
+
+ 
+}
+
+
+
+
+
+
+
+/* Barbie Giydirme Konteyneri - Renk Seçici Buton Konteyneri */
+.barbie-giydirme-container input {
+  margin-top: -78px;
+  font-size: 5px;
+  padding: 5px 5px;
+  background-color: #2e2e2e;
+  border: 2px solid #3f3f3f;
+  border-radius: 12px;
+justify-content: center;
+align-items: center;
+}
+.color-label{
+  font-size: small;
+}
+
+
+
+
+
+.barbie-giydirme-container .coming-soon {
+  position: relative;
+  bottom: -50px; /* Sayfanın altına sabitler */
+  left: 5%;
+  transform: translateX(-50%); /* Ortalar */
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #f4f4f4;
+}
+
+.coming-soon .arrow {
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
