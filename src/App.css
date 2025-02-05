@@ -115,3 +115,19 @@
 .clse-button:hover {
   background-color: #000000; /* Üzerine gelindiğinde kırmızı tonu değişir */
 }
+
+
+/* iPhone X'e özel stil */
+@media (max-width: 812px) { /* iPhone X'in ekran genişliği 375px'dir, yüksekliği 812px */
+  .styled-button {
+    font-size: 10px; /* Font boyutunu daha küçük yaparak uyumlu hale getirebiliriz */
+    padding: 8px 20px; /* Daha küçük buton boyutları */
+    margin-right: 10px; /* Daha az boşluk bırakmak */
+    width: 90%; /* Ekranın %90'ı kadar genişlik */
+  }
+}
+
+/* Hover efektini küçük ekranlarda da korumak */
+.styled-button:hover {
+  transform: scale(1.1);
+}
