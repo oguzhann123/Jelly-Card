@@ -4,19 +4,21 @@
 .barbie-giydirme-container {
   font-family: 'Arial', sans-serif;
   text-align: center;
-  padding: 50px;
+  
  /* background: radial-gradient(circle, rgb(30, 30, 30) 0%, rgb(34, 33, 33) 100%), url('/public/images/portalgo.png'); */
- background: url('/public/space1.png') no-repeat center center;
-background-size: cover;
-
+ background: url('/public/space1.png') no-repeat center center fixed;
+ 
   color: #f8bbd0; /* Pembe yazı */
   min-height: 100vh; /* Ekranın tamamını kaplar */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-padding: 0;
-  
+  background-size: cover;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
 }
 .logo {
   position: fixed;     /* Sayfa kaydırılsa bile sabit konumda kalır */
@@ -111,54 +113,12 @@ padding: 0;
 
 
 
-/* Kontrol Butonları   suanlik bir ise yaramiyor */ 
-.controls button {
-  margin: 0; /* Margin'i sıfırlıyoruz çünkü flex ile hizalayacağız */
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #ff80ab, #ff4081); /* Pembe degrade */
-  color: white;
-  border: 2px solid #ff4081;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-.controls button:hover {
-  background: linear-gradient(90deg, #ff4081, #ff80ab); /* Ters degrade */
-  transform: scale(1.1); /* Hover efekti */
-}
 
 
-/* İndirme Butonu Konteyneri */
-.download-button-container {
-  position: absolute; /* Sayfa kaydırıldığında butonun sabit kalmasını sağlar */
-  top: 5%; /* Sayfanın üst kısmına hizalar */
-  left: 50%; /* Sayfanın ortasına hizalar */
-  transform: translateX(-50%); /* Yatayda tam ortalamak için */
-  text-align: center; /* Butonun yatayda ortalanmasını sağlar */
-  z-index: 1000;
-  
-}
 
-.download-button {
-  background-color: rgb(86, 7, 92);
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  font-size: 16px;
-  border-radius: 8px;
-  
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
 
-.download-button:hover {
-  background-color: rgba(235, 235, 235, 0.8);
-  transform: scale(1.05);
-}
+
+
 
 /* İlerleme çubuğu stilini belirleyelim */
 .progress-bar-container {
@@ -166,7 +126,7 @@ padding: 0;
   background-color: #e0e0e0; /* Çubuğun arka planı */
   border-radius: 20px;
   height: 20px; /* Yükseklik */
-  margin: 20px 0;
+  margin: 10px 0;
   overflow: hidden; /* Border-radius etkisi için */
 }
 
@@ -339,9 +299,18 @@ padding: 0;
   opacity: 0.8; /* Hafif saydam yazı */
 }
 
+/* İndirme Butonu Konteyneri */
+.download-button-container {
+  position: fixed; /* Sayfa kaydırılsa bile sabit kalmasını sağlar */
+  top: 100%; /* Sayfanın üst kısmına hizalar */
+  left: 50%; /* Sayfanın ortasına hizalar */
+  transform: translateX(-50%); /* Yatayda tam ortalamak için */
+  text-align: center; /* Butonun yatayda ortalanmasını sağlar */
+  z-index: 1000;
+}
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* Genel konteyner */
   .barbie-giydirme-container {
     padding: 0;
@@ -376,34 +345,16 @@ padding: 0;
   }
 
   /* Butonları küçült */
-  .controls button {
+  .barbie-giydirme-container button {
     padding: 5px 8px;
     font-size: 9px;
     border-radius: 4px;
     margin: 1px;
   }
 
-  /* Download bölümü küçültüldü */
-  .download-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-  }
 
-  /* Download butonu küçültüldü */
-  .download-button {
-    padding: 6px 12px;
-    font-size: 10px;
-    margin: 4px;
-  }
 
-  /* Download counter küçültüldü */
-  .download-counter {
-    font-size: 11px;
-    margin-left: 6px;
-  }
+
 
   /* Input biraz kaydırıldı */
   .barbie-giydirme-container input {
@@ -411,11 +362,11 @@ padding: 0;
     padding: 4px;
     width: 15%;
  position: relative;
-    top: -25px; /* Daha yukarı taşır */
+    top: -485px; /* Daha yukarı taşır */
   }
  .progress-bar-container {
-    position: relative;
-    top: -15px; /* Daha yukarı taşır */
+    margin: 10px 0;
+
   }
 
   /* Modal içeriği küçültüldü */
@@ -450,8 +401,6 @@ padding: 0;
 
 
 
-
-
 /* Barbie Giydirme Konteyneri - Renk Seçici Buton Konteyneri */
 .barbie-giydirme-container input {
   margin-top: -78px;
@@ -469,6 +418,13 @@ align-items: center;
 
 
 
+.download-button-container {
+  position: fixed;  /* Butonu ekrana sabitler */
+  top: 5%;          /* Üstten %5 mesafe bırakır */
+  left: 50%;        /* Sayfanın tam ortasına hizalar */
+  transform: translateX(-50%); /* Ortalamayı düzeltir */
+  z-index: 1000;    /* Üstte görünmesini sağlar */
+}
 
 
 .barbie-giydirme-container .coming-soon {
@@ -486,7 +442,6 @@ align-items: center;
   margin-left: 10px;
   font-size: 24px;
 }
-
 
 
 
