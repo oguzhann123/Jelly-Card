@@ -1572,8 +1572,6 @@ const Dressup = () => {
           border: `10px solid ${borderColor}`,
           borderRadius: "15px",
           cursor: "pointer",
-          overflow: "hidden", // Çerçeve dışına taşan içerikleri gizle
-
           transition: "transform 0.6s, background-image 0.6s", // Dönüşümü ve arka plan değişimini yumuşat
           transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)", // Yalnızca dönüş için
         }}
@@ -1741,22 +1739,17 @@ const Dressup = () => {
 
       </div>
 
+
    {/* İndirme Butonu */}
    <div className="download-button-container">
   <button className="download-button" onClick={handleDownload}>
     Download
   </button>
 
-  {/* İlerleme Çubuğu */}
-  <div className="progress-bar-container">
-    <div
-      className="progress-bar"
-      style={{ width: `${(downloadCount / 500) * 100}%` }} // İlerleme çubuğunu dinamik olarak ayarla
-    ></div>
+
+    
   </div>
 
-  
-  </div>
 
   {/* <div className="coming-soon">
   <span>Coming Soon</span>
